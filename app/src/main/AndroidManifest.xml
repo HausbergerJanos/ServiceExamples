@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".MyBackgroundService" />
+        <service android:name=".HelloService_" />
+        <service android:name=".MyAnnotatedService_" />
     </application>
 
 </manifest>
