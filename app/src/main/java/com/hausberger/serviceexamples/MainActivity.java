@@ -19,13 +19,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Click(R.id.startServiceButton)
     protected void startButtonClicked() {
-        //MyAnnotatedService_.intent(getApplicationContext()).start();
-        HelloService_.intent(getApplicationContext()).start();
+        MyAnnotatedService_.intent(getApplication()).start();
+        //HelloService_.intent(getApplicationContext()).start();
     }
 
     @Click(R.id.stopServiceButton)
     protected void stopButtonClicked() {
-        //MyAnnotatedService_.intent(getApplicationContext()).stop();
-        HelloService_.intent(getApplicationContext()).stop();
+        MyAnnotatedService_.intent(getApplication()).stop();
+        //HelloService_.intent(getApplicationContext()).stop();
+    }
+
+    @Click(R.id.startIntentService)
+    protected void startIntentServiceButtonClicked() {
+        MyIntentService_.intent(getApplication()).start();
     }
 }

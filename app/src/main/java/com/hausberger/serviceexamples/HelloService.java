@@ -1,5 +1,6 @@
 package com.hausberger.serviceexamples;
 
+import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
@@ -9,6 +10,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import org.androidannotations.annotations.EService;
@@ -58,13 +60,14 @@ public class HelloService extends Service {
     @Override
     public void onDestroy() {
         Log.d(TAG, "onDestroy. Thread name: " + Thread.currentThread().getName());
+        serviceLooper.quit();
     }
 
     // Handler that receives messages from the thread
     private final class ServiceHandler extends Handler {
         public ServiceHandler(Looper looper){
             super(looper);
-            Log.d(TAG, "Service Handler create. Thread name:  " + Thread.currentThread().getName());
+            Log.d(TAG, "Service Handler created. Thread name:  " + Thread.currentThread().getName());
         }
 
         @Override

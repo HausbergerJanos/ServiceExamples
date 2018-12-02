@@ -32,6 +32,13 @@
             android:layout_below="@id/startServiceButton"
             android:layout_marginTop="20dp"
             android:text="@string/stop_background_service_button"/>
+
+        <Button
+            android:id="@+id/startIntentService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/start_intent_service_button"/>
     </RelativeLayout>
 
 </RelativeLayout>
