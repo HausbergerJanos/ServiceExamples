@@ -16,7 +16,7 @@
             android:id="@+id/testCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Test"/>
+            android:text="@string/test_check_box"/>
 
         <Button
             android:id="@+id/startServiceButton"
@@ -39,6 +39,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="@string/start_intent_service_button"/>
+
+        <TextView
+            android:id="@+id/counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/startIntentService"
+            android:gravity="center_horizontal"
+            android:paddingBottom="20dp"
+            android:textSize="16sp"
+            android:text="@string/result_to_display"/>
     </RelativeLayout>
 
 </RelativeLayout>

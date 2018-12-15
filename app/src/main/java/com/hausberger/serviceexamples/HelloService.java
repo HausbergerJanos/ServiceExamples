@@ -15,6 +15,9 @@ import android.util.Log;
 
 import org.androidannotations.annotations.EService;
 
+/**
+ * This Service runs oly one thread. So use IntentService instead of this.
+ */
 @EService
 public class HelloService extends Service {
 
@@ -45,6 +48,7 @@ public class HelloService extends Service {
         // start ID so we know which request we're stopping when we finish the job
         Message msg = serviceHandler.obtainMessage();
         msg.arg1 = startId;
+        msg.obj = intent;
         serviceHandler.sendMessage(msg);
 
         // If we get killed, after returning from here, restart
@@ -73,17 +77,20 @@ public class HelloService extends Service {
         @Override
         public void handleMessage(Message msg) {
             Log.d(TAG, "handleMessage. Thread name: " + Thread.currentThread().getName());
-            // Normally we would do some work here, like download a file.
-            // For our sample, we just sleep for 5 seconds.
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                // Restore interrupt status.
-                Thread.currentThread().interrupt();
+            Intent intent = (Intent) msg.obj;
+
+            int duration = intent.getIntExtra(Constants.SERVICE_DURATION, 0);
+            int sec = 1;
+
+            while (sec < duration) {
+                try {
+                    Thread.sleep(1000);
+                    Log.d(TAG, "Time: " + String.valueOf(sec) + " sec.");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                sec++;
             }
-            // Stop the service using the startId, so that we don't stop
-            // the service in the middle of handling another job
-            stopSelf(msg.arg1);
         }
     }
 }

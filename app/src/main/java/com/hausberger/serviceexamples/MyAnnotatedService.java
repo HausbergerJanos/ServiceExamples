@@ -23,7 +23,7 @@ public class MyAnnotatedService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand: Thread name: " + Thread.currentThread().getName());
-        doSomeStuff(startId);
+        doSomeStuff(intent, startId);
         return START_STICKY;
     }
 
@@ -35,13 +35,22 @@ public class MyAnnotatedService extends Service {
     }
 
     @Background
-    protected void doSomeStuff(int startId) {
+    protected void doSomeStuff(Intent intent, int startId) {
         Log.d(TAG, "doSomeStuff: Thread name: " + Thread.currentThread().getName() + "close Id: " + String.valueOf(startId));
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+        int duration = intent.getIntExtra(Constants.SERVICE_DURATION, 0);
+        int sec = 1;
+
+        while (sec < duration) {
+            try {
+                Thread.sleep(1000);
+                Log.d(TAG, "Time: " + String.valueOf(sec) + " sec.");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            sec++;
         }
+
         stopSelf(startId);
     }
 
