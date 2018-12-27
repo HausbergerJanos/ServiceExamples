@@ -1,54 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="40dp"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <RelativeLayout
+    <Button
+        android:id="@+id/bgServiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:text="@string/background_service_title"
+        android:layout_marginBottom="8dp" />
 
-        <CheckBox
-            android:id="@+id/testCheckBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/test_check_box"/>
+    <Button
+        android:id="@+id/foregroundServiceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/foreground_service_title"
+        android:layout_marginBottom="8dp" />
 
-        <Button
-            android:id="@+id/startServiceButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/testCheckBox"
-            android:text="@string/start_background_service_button"/>
+    <Button
+        android:id="@+id/jobSchedulerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/job_scheduler_title"
+        android:layout_marginBottom="8dp" />
 
-        <Button
-            android:id="@+id/stopServiceButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/startServiceButton"
-            android:layout_marginTop="20dp"
-            android:text="@string/stop_background_service_button"/>
+    <Button
+        android:id="@+id/boundServiceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bound_service_title" />
 
-        <Button
-            android:id="@+id/startIntentService"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="@string/start_intent_service_button"/>
-
-        <TextView
-            android:id="@+id/counter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/startIntentService"
-            android:gravity="center_horizontal"
-            android:paddingBottom="20dp"
-            android:textSize="16sp"
-            android:text="@string/result_to_display"/>
-    </RelativeLayout>
-
-</RelativeLayout>
+</LinearLayout>

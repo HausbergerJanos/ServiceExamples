@@ -1,4 +1,4 @@
-package com.hausberger.serviceexamples;
+package com.hausberger.serviceexamples.backgroundservice;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,11 +7,13 @@ import android.support.v4.app.JobIntentService;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.hausberger.serviceexamples.Constants;
+
 public class MyJobIntentService extends JobIntentService {
 
     private static final String TAG = MyJobIntentService.class.getSimpleName() + "-->";
 
-    public static void enqueWork(Context context, Intent intent) {
+    public static void enqueueWork(Context context, Intent intent) {
         enqueueWork(context, MyJobIntentService.class, Constants.MY_JOB_INTENT_ID, intent);
     }
 

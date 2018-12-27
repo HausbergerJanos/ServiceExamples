@@ -1,4 +1,4 @@
-package com.hausberger.serviceexamples;
+package com.hausberger.serviceexamples.backgroundservice;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.hausberger.serviceexamples.Constants;
 
 import org.androidannotations.annotations.EService;
 

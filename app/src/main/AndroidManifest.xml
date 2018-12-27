@@ -6,12 +6,21 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- For pre-Oreo devices -->
 
     <application
+        android:name=".CoreApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".backgroundservice.BgServiceActivity_" />
+
+        <activity android:name=".jobscheduler.JobSchedulerActivity_" />
+
+        <activity android:name=".foregroundservice.ForegroundServiceActivity_" />
+
+        <activity android:name=".boundservice.BoundServiceActivity_" />
 
         <activity android:name=".MainActivity_">
             <intent-filter>
@@ -23,20 +32,32 @@
         </activity>
 
         <service
-            android:name=".HelloService_"
+            android:name=".backgroundservice.HelloService_"
             android:exported="false" />
         <service
-            android:name=".MyAnnotatedService_"
+            android:name=".backgroundservice.MyAnnotatedService_"
             android:exported="false" />
         <service
-            android:name=".MyIntentService_"
+            android:name=".backgroundservice.MyIntentService_"
             android:exported="false" />
         <service
-            android:name=".MyJobIntentService"
+            android:name=".backgroundservice.MyJobIntentService"
             android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <receiver android:name=".BootBroadcastReceiver">
+        <service
+            android:name=".jobscheduler.ExampleJobService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service
+            android:name=".foregroundservice.MyForegroundService"
+            android:exported="false" />
+
+        <service android:name=".boundservice.MyBoundService"
+            android:exported="false" />
+
+        <receiver android:name=".backgroundservice.BootBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

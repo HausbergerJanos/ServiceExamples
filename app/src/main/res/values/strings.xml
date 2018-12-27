@@ -6,4 +6,16 @@
     <string name="test_check_box">Test</string>
     <string name="task_executed">Task executed in %1$d seconds.</string>
     <string name="result_to_display">Result to display</string>
+
+    <string name="foreground_service_hint">Enter some input</string>
+    <string name="foreground_service_start">Start service</string>
+    <string name="foreground_service_cancel">Stop service</string>
+
+    <string name="bound_service_button_title">Start</string>
+
+    <!-- Titles -->
+    <string name="background_service_title">Background service</string>
+    <string name="job_scheduler_title">Job scheduler</string>
+    <string name="foreground_service_title">Foreground service</string>
+    <string name="bound_service_title">Bound service</string>
 </resources>

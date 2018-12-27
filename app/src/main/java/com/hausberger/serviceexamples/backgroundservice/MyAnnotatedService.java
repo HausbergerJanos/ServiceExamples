@@ -1,10 +1,12 @@
-package com.hausberger.serviceexamples;
+package com.hausberger.serviceexamples.backgroundservice;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
+
+import com.hausberger.serviceexamples.Constants;
 
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EService;

@@ -1,6 +1,5 @@
-package com.hausberger.serviceexamples;
+package com.hausberger.serviceexamples.backgroundservice;
 
-import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
@@ -9,9 +8,9 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import com.hausberger.serviceexamples.Constants;
 
 import org.androidannotations.annotations.EService;
 

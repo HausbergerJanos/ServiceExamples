@@ -1,15 +1,14 @@
 package com.hausberger.serviceexamples;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
-import android.widget.TextView;
 
-import org.androidannotations.annotations.AfterViews;
+import com.hausberger.serviceexamples.backgroundservice.BgServiceActivity_;
+import com.hausberger.serviceexamples.boundservice.BoundServiceActivity_;
+import com.hausberger.serviceexamples.foregroundservice.ForegroundServiceActivity;
+import com.hausberger.serviceexamples.foregroundservice.ForegroundServiceActivity_;
+import com.hausberger.serviceexamples.jobscheduler.JobSchedulerActivity_;
+
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
@@ -18,58 +17,36 @@ import org.androidannotations.annotations.ViewById;
 public class MainActivity extends AppCompatActivity {
 
     @ViewById
-    protected Button startServiceButton;
+    protected Button bgServiceButton;
 
     @ViewById
-    protected Button stopServiceButton;
+    protected Button foregroundServiceButton;
 
     @ViewById
-    protected TextView counter;
+    protected Button jobSchedulerButton;
 
-    private BroadcastReceiver myLocalBroadcasRreceiver;
+    @ViewById
+    protected Button boundServiceButton;
 
 
-    @AfterViews
-    protected void init() {
-        myLocalBroadcasRreceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                int value = intent.getIntExtra(Constants.RESULT, -1);
-                counter.setText(getResources().getString(R.string.task_executed, value));
-            }
-        };
+    @Click(R.id.bgServiceButton)
+    protected void onBgServiceButtonClick() {
+        BgServiceActivity_.intent(this).start();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        IntentFilter intentFilter = new IntentFilter(Constants.MY_INTENT);
-        LocalBroadcastManager.getInstance(this).registerReceiver(myLocalBroadcasRreceiver, intentFilter);
+    @Click(R.id.foregroundServiceButton)
+    protected void onForegroundServiceButtonClicked() {
+        ForegroundServiceActivity_.intent(this).start();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(myLocalBroadcasRreceiver);
+    @Click(R.id.jobSchedulerButton)
+    protected void onJobSchedulerButtonClick() {
+        JobSchedulerActivity_.intent(this).start();
     }
 
-    @Click(R.id.startServiceButton)
-    protected void startButtonClicked() {
-        MyAnnotatedService_.intent(getApplication()).start();
-        //HelloService_.intent(getApplicationContext()).start();
+    @Click(R.id.boundServiceButton)
+    protected void onBoundServiceButtonclick() {
+        BoundServiceActivity_.intent(this).start();
     }
 
-    @Click(R.id.stopServiceButton)
-    protected void stopButtonClicked() {
-        MyAnnotatedService_.intent(getApplication()).stop();
-        //HelloService_.intent(getApplicationContext()).stop();
-    }
-
-    @Click(R.id.startIntentService)
-    protected void startIntentServiceButtonClicked() {
-        Intent intent = new Intent();
-        intent.putExtra(Constants.SERVICE_DURATION, 5);
-        MyIntentService_.intent(getApplication()).extras(intent).start();
-    }
 }
